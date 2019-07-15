@@ -13,8 +13,10 @@
 
 ## 2. 编译说明
  构建工程：scons --target=mdk4 –s  或者 scons --target=iar –s
+ 
  配置工程：env 工具
- IDE ： MDK5.24 或者 IAR8.3
+ 
+ IDE工具 ： MDK5.24 或者 IAR8.3
 
 ## 3. 烧写及执行
  IOT Board 板载 ST-Link
