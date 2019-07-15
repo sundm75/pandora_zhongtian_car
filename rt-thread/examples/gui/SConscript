@@ -1,0 +1,10 @@
+Import('RTT_ROOT')
+from building import *
+
+src = Glob('*.c')
+
+group = DefineGroup('gui_demo', src, depend = ['RT_USING_RTGUI']) + \
+        SConscript(dirs='examples',
+                variant_dir='',
+                duplicate=0)
+Return('group')
