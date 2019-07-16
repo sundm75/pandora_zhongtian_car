@@ -12,7 +12,7 @@
  软件：RT-Thread-v3.1.3
 
 ## 2. 编译说明
- 构建工程：scons --target=mdk4 –s  或者 scons --target=iar –s
+ 构建工程：scons --target=mdk5  或者 scons --target=iar 
  
  配置工程：env 工具
  
