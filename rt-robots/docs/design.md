@@ -10,7 +10,7 @@
 
 2. 主控： 潘多拉IoT Board物联网开发板 
 
-![多拉IoT Board物联网开发板](./pictures/2pandora.jpg)
+![潘多拉IoT Board物联网开发板](./pictures/2pandora.jpg)
 
 3. 软件：RT-Thread 3.1.3
 
@@ -28,5 +28,14 @@
 
 ## 3. 等待硬件到来开始写程序
 
+硬件来了，期间隔了一个智能车竞赛，还有一个机器人培训。结束后，装车，如图：
+![中天车](./pictures/3zhongtian_car.jpg)
+
+为了测试和对比，留了主控。
+
+## 4. 引脚 分配
+
+
+![引脚分配](./pictures/4IOport.bmp)
 
 
