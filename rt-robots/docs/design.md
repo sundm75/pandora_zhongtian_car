@@ -141,7 +141,7 @@ void lcd_dis(void)
 
 后期  **打算用 手柄遥控 、网络远程控制 、声音控制** 。
 
-![显示当前状态](./pictures/xsgs161.gif)
+![显示当前状态](./pictures/ir_ctrl.gif)
 
 
 
