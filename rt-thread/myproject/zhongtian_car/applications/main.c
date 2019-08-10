@@ -18,7 +18,7 @@
 #include <rtdbg.h>
 
 #include "pwm.h"
-#include "motor.h"
+#include "mymotor.h"
 
 #include <drv_lcd.h>
 #include <rttlogo.h>
@@ -89,6 +89,10 @@ int main(void)
     rt_int16_t key,infrared_key;
     struct infrared_decoder_data infrared_data;
 
+    wifi_init();
+    
+    telnet_server();
+    
     lcd_dis();
     
     /* 选择 NEC 解码器 */

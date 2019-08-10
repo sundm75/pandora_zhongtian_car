@@ -36,7 +36,7 @@
 ## 4. 引脚 分配
 
 
-![引脚分配](./pictures/4IOport.bmp)
+![引脚分配](./pictures/4IOport.jpg)
 
 ## 5. 遥控功能实现
 移植红外遥控部分程序，由于 drv_gpio更新，导致引脚号更换，查错一天后，将红外接收引脚由原来的 36 更换为 17 后正常。
@@ -58,7 +58,7 @@ C1 - 33
 以此类推。
 红外接收引脚修改如图：
 
-![红外接收引脚修改](./pictures/5changeIRrev.bmp)
+![红外接收引脚修改](./pictures/5changeIRrev.jpg)
 
 ## 6.编写控制 麦轮 的程序
 麦轮 的运转控制如图：
@@ -141,7 +141,65 @@ void lcd_dis(void)
 
 后期  **打算用 手柄遥控 、网络远程控制 、声音控制** 。
 
-![显示当前状态](./pictures/ir_ctrl.gif)
+![显示当前状态](./pictures/8ir_ctrl.gif)
+
+## 9. 添加网络 telnet控制
+根据 IoT_Board 的例程 16_iot_wifi_manager 进行移植。
+打开 wifi 硬件，如图
+![打开wifi硬件](./pictures/9wifi_cfg.jpg)
+
+添加包： EasyFlash，如图
+![打开 EasyFlash ](./pictures/10EasyFlashPkg.jpg)
+
+添加包：netutils，打开 telnet ,如图
+![打开 telnet ](./pictures/11netutils_telnet.jpg)
+
+更新工程后，编译出错，对比工程后发现，缺省 port 文件夹。
+如图。
+![缺少文件夹](./pictures/12port.jpg)
+添加后，更新正常。
+主程序添加 wifi 代码。就是例程 16_iot_wifi_manager  主程序。
+```
+int wifi_init(void)
+{
+    int result = RT_EOK;
+    struct rt_wlan_info info;
+    struct rt_wlan_scan_result *scan_result;
+
+    /* 等待 500 ms 以便 wifi 完成初始化 */
+    rt_hw_wlan_wait_init_done(500);
+
+    /* 扫描热点 */
+    LOG_D("start to scan ap ...");
+...
+...
+
+    return 0;
+}
+```
+主程序添加 启动 telnet 服务：
+```
+telnet_server();
+```
+
+将控制小车运动的函数导出到msh中。
+```
+void motor_ctl (int argc, char** argv)
+{
+    rt_uint32_t speed;
+    speed = strtoul(argv[1], NULL, 0);
+    function_turn_left_mid(speed);
+    function_turn_right_mid(speed);
+    function_turn_left_down(speed);
+    function_turn_right_down(speed);
+}
+MSH_CMD_EXPORT(motor_ctl, motor control sample e.g. motor_ctl 100 );
+```
+telenet 远程 控制，先连接 wifi : 192.168.0.118, 连接成功后，输入命令 “help”查看。 最后输入 组合命令 “motor_ctl 100”，以速度 100 左转、右转 、左前转、右前转 。再输入命令,  “motor_ctl 300” “motor_ctl 500” 提高速度运行。
+![telnet 运行结果](./pictures/13telnet.gif)
+
+
+
 
 
 

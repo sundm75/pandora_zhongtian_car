@@ -2375,7 +2375,10 @@
             <name>$PROJ_DIR$\applications\main.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\applications\motor.c</name>
+            <name>$PROJ_DIR$\applications\mymotor.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\applications\mywifi.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\applications\pwm.c</name>
@@ -2402,6 +2405,9 @@
     <group>
         <name>DeviceDrivers</name>
         <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\sdio\block_dev.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\src\completion.c</name>
         </file>
         <file>
@@ -2409,6 +2415,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\hwtimer\hwtimer.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\sdio\mmc.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\sdio\mmcsd_core.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\misc\pin.c</name>
@@ -2426,13 +2438,94 @@
             <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\misc\rt_drv_pwm.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\sdio\sd.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\sdio\sdio.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\serial\serial.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\spi\sfud\src\sfud.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\spi\sfud\src\sfud_sfdp.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\spi\spi_core.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\spi\spi_dev.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\spi\spi_flash_sfud.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\src\waitqueue.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\wlan\wlan_cfg.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\wlan\wlan_cmd.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\wlan\wlan_dev.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\wlan\wlan_lwip.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\wlan\wlan_mgnt.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\wlan\wlan_prot.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\wlan\wlan_workqueue.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\rt-thread\components\drivers\src\workqueue.c</name>
+        </file>
+    </group>
+    <group>
+        <name>dlib</name>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\libc\compilers\dlib\environ.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\libc\compilers\dlib\libc.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\libc\compilers\dlib\rmtx.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\libc\compilers\dlib\stdio.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\libc\compilers\dlib\syscall_close.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\libc\compilers\dlib\syscall_lseek.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\libc\compilers\dlib\syscall_mem.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\libc\compilers\dlib\syscall_open.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\libc\compilers\dlib\syscall_read.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\libc\compilers\dlib\syscall_remove.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\libc\compilers\dlib\syscall_write.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\libc\compilers\dlib\time.c</name>
         </file>
     </group>
     <group>
@@ -2450,10 +2543,100 @@
             <name>$PROJ_DIR$\..\..\drivers\drv_hwtimer.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\drivers\drv_lcd.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\drivers\drv_pwm.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\drivers\drv_qspi.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\drivers\drv_qspi_flash.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\drivers\drv_sdio_adapter.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\drivers\drv_spi.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\drivers\drv_usart.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\drivers\drv_wlan.c</name>
+        </file>
+    </group>
+    <group>
+        <name>EasyFlash</name>
+        <file>
+            <name>$PROJ_DIR$\packages\EasyFlash-v3.2.1\src\easyflash.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\EasyFlash-v3.2.1\src\ef_cmd.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\EasyFlash-v3.2.1\src\ef_env.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\EasyFlash-v3.2.1\src\ef_env_wl.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\ports\easyflash\ef_fal_port.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\EasyFlash-v3.2.1\src\ef_iap.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\EasyFlash-v3.2.1\src\ef_log.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\EasyFlash-v3.2.1\src\ef_utils.c</name>
+        </file>
+    </group>
+    <group>
+        <name>fal</name>
+        <file>
+            <name>$PROJ_DIR$\packages\fal-v0.2.0\src\fal.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\fal-v0.2.0\src\fal_flash.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\ports\fal\fal_flash_sfud_port.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\ports\fal\fal_flash_stm32l4_port.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\fal-v0.2.0\src\fal_partition.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\fal-v0.2.0\src\fal_rtt.c</name>
+        </file>
+    </group>
+    <group>
+        <name>Filesystem</name>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\dfs\filesystems\devfs\devfs.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\dfs\src\dfs.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\dfs\src\dfs_file.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\dfs\src\dfs_fs.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\dfs\src\dfs_posix.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\dfs\src\poll.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\dfs\src\select.c</name>
         </file>
     </group>
     <group>
@@ -2541,6 +2724,213 @@
         </file>
     </group>
     <group>
+        <name>libc</name>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\libc\compilers\common\gmtime_r.c</name>
+        </file>
+    </group>
+    <group>
+        <name>lwIP</name>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\api\api_lib.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\api\api_msg.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\ipv4\autoip.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\def.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\ipv4\dhcp.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\dns.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\api\err.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\ipv4\etharp.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\netif\ethernet.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\netif\ethernetif.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\ipv4\icmp.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\ipv4\igmp.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\inet_chksum.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\init.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\ip.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\ipv4\ip4.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\ipv4\ip4_addr.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\ipv4\ip4_frag.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\netif\lowpan6.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\memp.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\api\netbuf.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\api\netdb.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\netif.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\api\netifapi.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\pbuf.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\apps\ping\ping.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\raw.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\api\sockets.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\stats.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\sys.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\arch\sys_arch.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\tcp.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\tcp_in.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\tcp_out.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\api\tcpip.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\timeouts.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\lwip-2.0.2\src\core\udp.c</name>
+        </file>
+    </group>
+    <group>
+        <name>netdev</name>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\netdev\src\netdev.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\netdev\src\netdev_ipaddr.c</name>
+        </file>
+    </group>
+    <group>
+        <name>robots</name>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\encoder\ab_phase_encoder.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\chassis\chassis.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\protocol\command.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\controller\controller.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\motor\dual_pwm_motor.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\encoder\encoder.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\controller\inc_pid_controller.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\kinematics\kinematics.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\robot\mobile_robot.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\motor\motor.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\controller\pos_pid_controller.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\protocol\ps2.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\robot\robot.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\encoder\single_phase_encoder.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\motor\single_pwm_motor.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\packages\rt-robot-latest\wheel\wheel.c</name>
+        </file>
+    </group>
+    <group>
+        <name>rt_ota</name>
+    </group>
+    <group>
+        <name>SAL</name>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\sal_socket\impl\af_inet_lwip.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\sal_socket\dfs_net\dfs_net.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\sal_socket\socket\net_netdb.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\sal_socket\socket\net_sockets.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\rt-thread\components\net\sal_socket\src\sal_socket.c</name>
+        </file>
+    </group>
+    <group>
+        <name>stm32_sdio</name>
+        <file>
+            <name>$PROJ_DIR$\packages\stm32_sdio-v1.0.2\stm32_sdio.c</name>
+        </file>
+    </group>
+    <group>
         <name>STM32L4xx_HAL_Driver</name>
         <file>
             <name>$PROJ_DIR$\..\..\libraries\CMSIS\Device\ST\STM32L4xx\Source\Templates\iar\startup_stm32l475xx.s</name>
@@ -2570,10 +2960,16 @@
             <name>$PROJ_DIR$\..\..\libraries\STM32L4xx_HAL_Driver\src\stm32l4xx_hal_pwr_ex.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\libraries\STM32L4xx_HAL_Driver\src\stm32l4xx_hal_qspi.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\libraries\STM32L4xx_HAL_Driver\src\stm32l4xx_hal_rcc.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\libraries\STM32L4xx_HAL_Driver\src\stm32l4xx_hal_rcc_ex.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\libraries\STM32L4xx_HAL_Driver\src\stm32l4xx_hal_spi.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\libraries\STM32L4xx_HAL_Driver\src\stm32l4xx_hal_tim.c</name>
@@ -2589,6 +2985,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\libraries\CMSIS\Device\ST\STM32L4xx\Source\Templates\system_stm32l4xx.c</name>
+        </file>
+    </group>
+    <group>
+        <name>wifi</name>
+        <file>
+            <name>$PROJ_DIR$\ports\wifi\wifi_config.c</name>
         </file>
     </group>
 </project>
