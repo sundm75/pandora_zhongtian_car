@@ -2383,6 +2383,9 @@
         <file>
             <name>$PROJ_DIR$\applications\pwm.c</name>
         </file>
+        <file>
+            <name>$PROJ_DIR$\applications\uartx.c</name>
+        </file>
     </group>
     <group>
         <name>cpu</name>
@@ -2850,6 +2853,12 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\..\rt-thread\components\net\netdev\src\netdev_ipaddr.c</name>
+        </file>
+    </group>
+    <group>
+        <name>NetUtils</name>
+        <file>
+            <name>$PROJ_DIR$\packages\netutils-v1.1.0\telnet\telnet.c</name>
         </file>
     </group>
     <group>

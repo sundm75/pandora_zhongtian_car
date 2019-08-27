@@ -23,6 +23,8 @@
 #include <drv_lcd.h>
 #include <rttlogo.h>
 
+rt_uint16_t repeated_times = 0;
+
 rt_int16_t key_scan(void)
 {
     if (rt_pin_read(PIN_KEY0) == PIN_LOW)
@@ -82,18 +84,17 @@ void lcd_dis(void)
     }
 }
 
-int main(void)
-{
-    unsigned int count = 1;
+/*定时器检查红外接收 按键是否松开*/
+
+
+/*红外接收线程 */
+
+void infrared_thread_entry(void* parameter)
+{ 
     int speed = 500;
     rt_int16_t key,infrared_key;
     struct infrared_decoder_data infrared_data;
 
-    wifi_init();
-    
-    telnet_server();
-    
-    lcd_dis();
     
     /* 选择 NEC 解码器 */
     ir_select_decoder("nec");
@@ -111,7 +112,7 @@ int main(void)
     /*电机初始化*/
     motor_init();
 
-    while (count > 0)
+    while (1)
     {
         /* 按键扫描 */
         key = key_scan();
@@ -132,8 +133,10 @@ int main(void)
             rt_pin_write(PIN_LED_R, PIN_LOW);
             LOG_I("RECEIVE OK: addr:0x%02X key:0x%02X repeat:%d",
                 infrared_data.data.nec.addr, infrared_data.data.nec.key, infrared_data.data.nec.repeat);
+            repeated_times++;
             if (infrared_key != infrared_data.data.nec.key)
             {
+              //repeated_times = infrared_data.data.nec.repeat;
               infrared_key = infrared_data.data.nec.key;
               switch (infrared_key)
               {
@@ -216,13 +219,136 @@ int main(void)
               }
             }
         }
+        
         rt_thread_mdelay(1);
 
         /* 熄灭蓝灯 */
         rt_pin_write(PIN_LED_B, PIN_HIGH);
         /* 熄灭红灯 */
         rt_pin_write(PIN_LED_R, PIN_HIGH);
-        count++;
+    }    
+}
+
+/* 定时器的控制块 */
+static rt_timer_t timer1;
+
+/* 定时器1超时函数 */
+static void timeout1(void* parameter)
+{
+  static rt_uint16_t this_times,stop_times=0;
+  if  (this_times < repeated_times)
+  {
+    this_times = repeated_times;
+    stop_times = 0;
+  }
+  else
+  {
+    if(stop_times==0)
+    {
+      LOG_I("stoped \n");
+      repeated_times = 0;
+      this_times = 0;
+      function_stop1();
+      stop_times = 1;
     }
+  }
+}
+
+
+extern uint8_t Flag_Qian;
+extern uint8_t Flag_Hou;
+extern uint8_t Flag_Left;
+extern uint8_t Flag_Right;
+extern uint8_t Flag_sudu; //2为低速挡（默认值）1为高速档
+extern struct rt_mailbox mb;
+
+void motor_control_entry(void* parameter)
+{
+  int speed = 500;
+  rt_uint32_t data;
+  while(1)
+  {
+    if(Flag_sudu==1)     speed = 600;  //高速档 
+    else if(Flag_sudu==2) speed = 300; //低速挡（默认值）
+    
+    /* 从邮箱中收取邮件 */
+    if (rt_mb_recv(&mb, (rt_ubase_t*)&data, 1000)
+            == RT_EOK)
+    {
+        /* 显示邮箱内容 */
+        rt_kprintf((char const*)&data);
+        /*控制车辆*/
+        switch (data)
+        {
+        case 'A':function_up(speed);
+          break;
+        case 'B':function_right_up(speed); 
+          break;
+        case 'C':function_right(speed); 
+          break;
+        case 'D':function_right_down(speed);
+          break;
+        case 'E':function_down(speed); 
+          break;
+        case 'F':function_left_down(speed);
+          break;
+        case 'G': function_left(speed);
+          break;
+        case 'H':function_left_up(speed);   
+          break;
+        case 'Z':function_stop1();   
+          break;
+        default:
+          break;
+        }
+    }
+    
+  }
+  
+  
+}
+
+#define THREAD_PRIORITY         25
+#define THREAD_STACK_SIZE       512
+#define THREAD_TIMESLICE        5
+
+static rt_thread_t tid1 = RT_NULL;
+
+int main(void)
+{
+    extern int wifi_init(void);
+    //wifi_init();
+    
+    extern void telnet_server(void);
+    //telnet_server();
+        
+    lcd_dis();
+    /*红外接收线程*/
+    tid1 = rt_thread_create("thread1",
+            infrared_thread_entry, 
+            RT_NULL,
+            THREAD_STACK_SIZE, THREAD_PRIORITY, THREAD_TIMESLICE); 
+    if (tid1 != RT_NULL)
+            rt_thread_startup(tid1);
+        
+      /* 创建定时器1 检测红外接收中的停止*/
+      timer1 = rt_timer_create("timer1",  /* 定时器名字是 timer1 */
+                                              timeout1, /* 超时时回调的处理函数 */
+                                              RT_NULL,  /* 超时函数的入口参数 */
+                                              RT_TICK_PER_SECOND/4,       /* 定时长度  */
+                                              RT_TIMER_FLAG_PERIODIC); /* 周期性定时器 */
+    /* 启动定时器 */
+    if (timer1 != RT_NULL) rt_timer_start(timer1); 
+    
+    /*接收串口数据控制车线程*/    
+    extern int test_rtt_uartse(void);    
+    test_rtt_uartse();    
+    /*串口接收数据控制线程*/
+    tid1 = rt_thread_create("thread1",
+            motor_control_entry, 
+            RT_NULL,
+            THREAD_STACK_SIZE, THREAD_PRIORITY, THREAD_TIMESLICE); 
+    if (tid1 != RT_NULL)
+            rt_thread_startup(tid1);        
     return 0;
 }

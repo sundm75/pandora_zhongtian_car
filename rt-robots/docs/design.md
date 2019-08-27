@@ -198,6 +198,58 @@ MSH_CMD_EXPORT(motor_ctl, motor control sample e.g. motor_ctl 100 );
 telenet 远程 控制，先连接 wifi : 192.168.0.118, 连接成功后，输入命令 “help”查看。 最后输入 组合命令 “motor_ctl 100”，以速度 100 左转、右转 、左前转、右前转 。再输入命令,  “motor_ctl 300” “motor_ctl 500” 提高速度运行。
 ![telnet 运行结果](./pictures/13telnet.gif)
 
+# 10. 使用蓝牙遥控
+
+## 10.1 手机APP 使用平衡之家的软件
+如图
+
+![平衡之家手机APP](./pictures/14app.jpg)
+
+## 10.2 修改IoTBoard程序
+### 1）串口接收
+添加标志位：
+X-高速  0x58 Flag_sudu=2
+Y-低速  0x59 Flag_sudu=1
+Z-刹车  0x5A Flag_Qian=0,Flag_Hou=0,Flag_Left=0,Flag_Right=0;
+A-前	0x41 
+E-后	0x45
+FGH-左	0x46 0x47 0x48
+BCD-右	0x42 0x43 0x44
+
+接收参数起始：0x7B (0x30-0x38) 0x3A```{(序号 0-8)： ```
+
+接收参数结束：0x7D ``` }  ```
+
+```
+(Receive[3]==0x50) 	       PID_Send=1;     //获取设备参数
+(Receive[3]==0x57) 	 Flash_Send=1;   //掉电保存参数
+(Receive[1]!=0x23)                    //更新PID参数
+Receive[0] Receive[2] 有何用处？
+```
+
+用于console 的串口：
+
+``` 
+(uart1) the device name for console
+```
+
+蓝牙串口接收： 
+- uart2 - PA2 PA3
+
+- GBC_KEY PE1
+
+- GBC_KEY PE0
+
+新建立一个电机控制线程。
+
+蓝牙控制完成了，看图
+![蓝牙+红外控制](./pictures/15bluetooth.gif)
+
+
+
+
+
+
 
 
 

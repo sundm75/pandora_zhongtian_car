@@ -299,6 +299,7 @@
 /* On-chip Peripheral Drivers */
 
 #define BSP_USING_UART1
+#define BSP_USING_UART2
 #define BSP_UART_USING_DMA_RX
 #define BSP_USING_SPI3
 #define BSP_USING_QSPI

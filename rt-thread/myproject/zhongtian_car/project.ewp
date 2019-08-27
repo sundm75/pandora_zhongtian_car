@@ -2199,6 +2199,9 @@
     <file>
       <name>$PROJ_DIR$\applications\pwm.c</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\applications\uartx.c</name>
+    </file>
   </group>
   <group>
     <name>EasyFlash</name>
